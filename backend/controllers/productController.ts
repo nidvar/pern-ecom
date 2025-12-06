@@ -10,9 +10,9 @@ export const allProducts = async (req: Request, res: Response)=>{
             ORDER BY created_at DESC
         `;
         console.log('products------->', products);
-        res.status(200).json({message: 'all products', data: products});
+        return res.status(200).json({message: 'all products', data: products});
     }catch(error){
-        console.log('all products error ======= >',error);
+        return res.status(500).json({message: 'fail'})
     }
 };
 
@@ -29,10 +29,10 @@ export const createProduct = async (req: Request, res: Response)=>{
             RETURNING *
         `
         console.log('new product added', newProduct[0]);
-        res.status(201).json({message: 'product added'});
+        return res.status(201).json({message: 'product added'});
     }catch(err){
         console.log(err);
-        res.status(500).json({message: 'fail'})
+        return res.status(500).json({message: 'fail'})
     };
 };
 
@@ -44,10 +44,10 @@ export const getSingleProduct = async (req: Request, res: Response)=>{
             SELECT * FROM products WHERE id=${id}
         `;
         console.log('single product', product);
-        res.status(201).json({message: 'retrieved product', product: product});
+        return res.status(201).json({message: 'retrieved product', product: product});
     }catch(err){
         console.log(err);
-        res.status(500).json({message: 'fail'})
+        return res.status(500).json({message: 'fail'})
     };
 };
 
@@ -67,10 +67,10 @@ export const updateProduct = async (req: Request, res: Response)=>{
             RETURNING *
         `;
         console.log('product updated', product);
-        res.status(201).json({message: 'updated product', product: product[0]});
+        return res.status(201).json({message: 'updated product', product: product[0]});
     }catch(err){
         console.log(err);
-        res.status(500).json({message: 'update atempt fail'})
+        return res.status(500).json({message: 'update atempt fail'})
     };
 };
 
@@ -83,9 +83,9 @@ export const deleteProduct = async (req: Request, res: Response)=>{
             DELETE FROM products WHERE id=${id} RETURNING *
         `;
         console.log('product deleted', product);
-        res.status(201).json({message: 'deleted product', product: product[0]});
+        return res.status(201).json({message: 'deleted product', product: product[0]});
     }catch(err){
         console.log(err);
-        res.status(500).json({message: 'delete atempt fail'})
+        return res.status(500).json({message: 'delete atempt fail'})
     };
 };
