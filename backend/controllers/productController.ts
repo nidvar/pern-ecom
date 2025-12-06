@@ -1,6 +1,6 @@
 import type {Request, Response} from 'express';
 
-import { sql } from '../config/db.js'
+import { sql } from '../config/db.js';
 
 export const allProducts = async (req: Request, res: Response)=>{
     console.log('getting all products');
@@ -18,20 +18,74 @@ export const allProducts = async (req: Request, res: Response)=>{
 
 export const createProduct = async (req: Request, res: Response)=>{
     console.log('Creating single product');
-    res.send({message: 'creating single product'})
+    try{
+        const name = req.body.name;
+        const price = req.body.price;
+        const image = req.body.image;
+
+        const newProduct = await sql`
+            INSERT INTO products (name, price, image)
+            VALUES (${name}, ${price}, ${image})
+            RETURNING *
+        `
+        console.log('new product added', newProduct[0]);
+        res.status(201).json({message: 'product added'});
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message: 'fail'})
+    };
 };
 
-export const singleProduct = async (req: Request, res: Response)=>{
+export const getSingleProduct = async (req: Request, res: Response)=>{
     console.log('get single product');
-    res.send({message: 'get single product'})
+    try{
+        const id = req.params.id;
+        const product = await sql`
+            SELECT * FROM products WHERE id=${id}
+        `;
+        console.log('single product', product);
+        res.status(201).json({message: 'retrieved product', product: product});
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message: 'fail'})
+    };
 };
 
 export const updateProduct = async (req: Request, res: Response)=>{
     console.log('update product');
-    res.send({message: 'update product'})
+    try{
+        const id = req.params.id;
+
+        const name = req.body.name;
+        const price = req.body.price;
+        const image = req.body.image;
+
+        const product = await sql`
+            UPDATE products
+            SET name=${name}, price=${price}, image=${image}
+            WHERE id=${id}
+            RETURNING *
+        `;
+        console.log('product updated', product);
+        res.status(201).json({message: 'updated product', product: product[0]});
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message: 'update atempt fail'})
+    };
 };
 
 export const deleteProduct = async (req: Request, res: Response)=>{
     console.log('delete product');
-    res.send({message: 'delete product'})
+    try{
+        const id = req.params.id;
+
+        const product = await sql`
+            DELETE FROM products WHERE id=${id} RETURNING *
+        `;
+        console.log('product deleted', product);
+        res.status(201).json({message: 'deleted product', product: product[0]});
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message: 'delete atempt fail'})
+    };
 };
