@@ -29,7 +29,7 @@ export const createProduct = async (req: Request, res: Response)=>{
             RETURNING *
         `
         console.log('new product added', newProduct[0]);
-        return res.status(201).json({message: 'product added'});
+        return res.status(201).json({message: 'product added', product: newProduct});
     }catch(err){
         console.log(err);
         return res.status(500).json({message: 'fail'})
