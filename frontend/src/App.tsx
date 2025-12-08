@@ -6,7 +6,7 @@ import ProductPage from './pages/ProductPage';
 
 function App() {
   return (
-    <div>
+    <div data-theme="garden">
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
