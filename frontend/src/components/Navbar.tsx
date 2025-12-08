@@ -1,7 +1,12 @@
+import { Link } from 'react-router-dom';
+import { ShoppingCartIcon } from 'lucide-react';
+
 const Navbar = function(){
     return(
-        <div>
-            <h1>Navbar</h1>
+        <div className="bg-sky-200">
+            <h1>Navbar - <ShoppingCartIcon /> </h1>
+            <Link to='/' >Home</Link>
+            <Link to='/products' >Products</Link>
         </div>
     )
 };
