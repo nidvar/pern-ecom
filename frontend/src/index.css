@@ -68,17 +68,26 @@
 }
 
 .single-product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     max-width: 300px;
     margin: 10px;
     padding: 15px;
 
     border-radius: 6px;
-    background-color: whitesmoke;
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
+.product-description {
+    font-weight: bold;
+}
+
+
+
 .product-image-container {
     height: 200px;
+    width: 200px;
     overflow: hidden;
 }
 

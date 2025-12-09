@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useProductStore } from "../store/useProductStore";
 
+import ProductCard from "../components/ProductCard";
+
 const HomePage = function () {
     const productStore = useProductStore();
 
@@ -18,16 +20,8 @@ const HomePage = function () {
                 </div>:
                 <div className="products-container">
                     {
-                        productStore.products.map((item, index)=>{
-                            return (
-                                <div key={index} className="single-product">
-                                    <div className="product-image-container">
-                                        <img src={item.image} alt="product" />
-                                    </div>
-                                    <p>{item.name}</p>
-                                    <p>{item.price}</p>
-                                </div>
-                            )
+                        productStore.products.map((item)=>{
+                            return <ProductCard product={item} key={item.id} />
                         })
                     }
                 </div>
