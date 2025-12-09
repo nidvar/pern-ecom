@@ -8,7 +8,7 @@ import { useThemeStore } from './store/useThemeStore';
 function App() {
     const themeStore = useThemeStore();
     return (
-        <div data-theme={themeStore.theme}>
+        <div className='app' data-theme={themeStore.theme}>
             <Navbar />
             <Routes>
                 <Route path="/" element={<HomePage />} />
