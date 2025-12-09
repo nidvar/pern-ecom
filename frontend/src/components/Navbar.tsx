@@ -17,14 +17,14 @@ const Navbar = function(){
     }
 
     const themes = [
-        "light",
-        "retro",
-        "cyberpunk",
-        "valentine",
-        "garden",
-        "aqua",
-        "wireframe",
-        "autumn",
+        "Light",
+        "Retro",
+        "Cyberpunk",
+        "Valentine",
+        "Garden",
+        "Aqua",
+        "Wireframe",
+        "Autumn",
     ];
 
     useEffect(()=>{
@@ -47,7 +47,7 @@ const Navbar = function(){
             {
                 paletteVis?
                 <div className='theme-selector-container'>
-                    <div className='theme-selector'>
+                    <div className='theme-selector-dropdown'>
                         {themes.map((item, index)=>{
                             return (
                                 <p 
