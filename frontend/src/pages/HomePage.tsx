@@ -10,22 +10,27 @@ const HomePage = function () {
 
     return (
         <div className="my-main">
-            <h1 className="my-heading">Home Page</h1>
-            {   
+            {
                 productStore.loading? 
                 <div className="loading-blurb">
                     <h2>Loading data...</h2>
                     <p>Please be patient</p>
                 </div>:
-                productStore.products.map((item, index)=>{
-                    return (
-                        <div key={index} className="single-product">
-                            <img src={item.image} />
-                            <p>{item.name}</p>
-                            <p>{item.price}</p>
-                        </div>
-                    )
-                })
+                <div className="products-container">
+                    {
+                        productStore.products.map((item, index)=>{
+                            return (
+                                <div key={index} className="single-product">
+                                    <div className="product-image-container">
+                                        <img src={item.image} alt="product" />
+                                    </div>
+                                    <p>{item.name}</p>
+                                    <p>{item.price}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             }
         </div>
     )
