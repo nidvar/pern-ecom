@@ -6,7 +6,7 @@ export const useThemeStore = create<ThemeStoreType>(function(set){
         theme: localStorage.getItem('theme') || '',
         setTheme: function(theme){
             set({
-                theme: theme
+                theme: theme.toLowerCase()
             });
             localStorage.setItem('theme', theme);
         }

@@ -20,21 +20,17 @@
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
-    height: 50px;
     margin: auto;
-}
-
-.my-nav-inner-left {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .my-nav-inner-right {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 100px;
+}
+
+.nav-icon-container {
+    padding: 10px;
 }
 
 .theme-selector-container {
@@ -48,13 +44,13 @@
     position: absolute;
     z-index: 10;
     right: 0;
-    padding: 0 10px;
     background-color: whitesmoke !important;
     color: black !important;
 }
 
 .theme-item {
-    margin: 5px;
+    padding: 5px;
+    width: 100%;
 }
 
 /* main */
@@ -88,6 +84,8 @@
 
 .hover:hover {
     cursor: pointer;
+    background-color: rgb(229, 228, 228);
+    transition: background-color 0.2s ease;
 }
 
 .hide {

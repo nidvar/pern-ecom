@@ -17,14 +17,14 @@ const Navbar = function(){
     }
 
     const themes = [
-        "light",
-        "retro",
-        "cyberpunk",
-        "valentine",
-        "garden",
-        "aqua",
-        "wireframe",
-        "autumn",
+        "Light",
+        "Retro",
+        "Cyberpunk",
+        "Valentine",
+        "Garden",
+        "Aqua",
+        "Wireframe",
+        "Autumn",
     ];
 
     useEffect(()=>{
@@ -35,12 +35,16 @@ const Navbar = function(){
         <>
             <div className='my-nav'>
                 <div className='my-nav-inner'>
-                    <div className='my-nav-inner-left'>
+                    <div className='nav-icon-container hover'>
                         <Link to='/' ><House /></Link>
                     </div>
                     <div className='my-nav-inner-right'>
-                        <Palette className='hover' onClick={openPalette} />
-                        <Link to='/' ><ShoppingCartIcon /></Link>
+                        <div className='nav-icon-container hover'>
+                            <Palette onClick={openPalette} />
+                        </div>
+                        <div className='nav-icon-container hover'>
+                            <Link to='/' ><ShoppingCartIcon /></Link>
+                        </div>
                     </div>
                 </div>
             </div>
