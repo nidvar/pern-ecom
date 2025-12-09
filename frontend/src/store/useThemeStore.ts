@@ -3,11 +3,12 @@ import type { ThemeStoreType } from '../types';
 
 export const useThemeStore = create<ThemeStoreType>(function(set){
     return {
-        theme: localStorage.getItem('theme') || 'garden',
+        theme: localStorage.getItem('theme') || '',
         setTheme: function(theme){
             set({
                 theme: theme
-            })
+            });
+            localStorage.setItem('theme', theme);
         }
     }
 });

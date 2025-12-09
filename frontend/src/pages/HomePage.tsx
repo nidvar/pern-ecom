@@ -1,7 +1,7 @@
 const HomePage = function () {
     return (
-        <div>
-            <h1>Home Page</h1>
+        <div className="my-main">
+            <h1 className="my-heading">Home Page</h1>
         </div>
     )
 };

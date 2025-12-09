@@ -9,7 +9,7 @@ const Navbar = function(){
     const themeStore = useThemeStore();
 
     const [paletteVis, setPaletteVis] = useState(false);
-    const [theme, setTheme] = useState('');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || '');
 
     const openPalette = function(){
         const vis = !paletteVis;
@@ -17,19 +17,19 @@ const Navbar = function(){
     }
 
     const themes = [
-        "Light",
-        "Retro",
-        "Cyberpunk",
-        "Valentine",
-        "Garden",
-        "Aqua",
-        "Wireframe",
-        "Autumn",
+        "light",
+        "retro",
+        "cyberpunk",
+        "valentine",
+        "garden",
+        "aqua",
+        "wireframe",
+        "autumn",
     ];
 
     useEffect(()=>{
         themeStore.setTheme(theme);
-    }, [theme])
+    }, [theme]);
 
     return(
         <>
@@ -57,7 +57,7 @@ const Navbar = function(){
                                 >
                                     {item}
                                 </p>
-                                )
+                            )
                         })}
                     </div>
                 </div>:''

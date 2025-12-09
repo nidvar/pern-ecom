@@ -57,10 +57,39 @@
     margin: 5px;
 }
 
-.hide {
-    display: none;
+/* main */
+.my-main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* utils */
+
+.my-heading {
+    font-size: 26px;
+    font-weight: 900;
+    text-align: center;
 }
 
 .hover:hover {
     cursor: pointer;
+}
+
+.hide {
+    display: none;
 }
