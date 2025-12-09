@@ -18,7 +18,6 @@
     max-width: 1200px;
     height: 40px;
     margin: auto;
-    padding: 0 15px;
     background-color: rgb(186, 219, 232);
 }
 
@@ -34,7 +33,34 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70px;
+    width: 100px;
+
+
 
     background-color: rgb(192, 235, 192);
+}
+
+.theme-selector-container {
+    background-color: green;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
+.theme-selector {
+    background-color: yellow;
+    width: 100px;
+    position: absolute;
+    z-index: 10;
+    right: 0;
+}
+
+
+
+.hide {
+    display: none;
+}
+
+.hover:hover {
+    cursor: pointer;
 }
