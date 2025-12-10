@@ -9,7 +9,7 @@ const ProductCard = function({product} : {product: ProductType}){
             </div>
             <div className='product-description'>
                 <p>{product.name}</p>
-                <p>{product.price}</p>
+                <p>${product.price}</p>
             </div>
         </Link>
     )

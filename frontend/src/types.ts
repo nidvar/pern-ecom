@@ -12,9 +12,9 @@ export type ProductStoreType = {
 }
 
 export type ProductType = {
-    id: 1,
+    id?: 1,
     name: string
     image: string
     price: string
-    created_at: string
+    created_at?: string
 }

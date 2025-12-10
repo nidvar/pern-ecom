@@ -1,14 +1,15 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { FormEvent } from "react";
+
+import { useProductStore } from "../store/useProductStore";
 
 const AddProduct = function(){
 
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
-    const [image, setImage] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const productStore = useProductStore();
 
-    const fileInputRef = useRef(null);
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState(0);
+    const [imageURL, setImageURL] = useState('');
 
     const handleModal = function(arg?: string){
         const modal = document.getElementById('my_modal_1') as HTMLDialogElement | null;
@@ -23,29 +24,14 @@ const AddProduct = function(){
 
     function handleSubmit(e: FormEvent<HTMLFormElement>): void {
         e.preventDefault();
-        console.log('submit');
+        const productObj = {
+            name: name,
+            price: price.toFixed(2),
+            image: imageURL
+        };
+        productStore.addProduct(productObj);
         handleModal();
     };
-
-    function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>): void {
-        if(e.target.files && e.target.files[0]){
-            if(e.target.files[0].size > 1500000){
-                setErrorMessage('Image too large');
-                setImage('');
-                e.target.files = null;
-                return;
-            };
-            const image = e.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onloadend = async function(){
-                const base64Image = reader.result;
-                if(typeof base64Image === 'string'){
-                    setImage(base64Image);
-                }
-            };
-        };
-    }
 
     return(
         <>
@@ -53,30 +39,29 @@ const AddProduct = function(){
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
                     <form onSubmit={handleSubmit} className="my-form">
-                        <img 
-                            src={image || "blank_profile.jpg"}
-                        />
-                        <input 
-                            type="file"
-                            accept="image/*"
-                            ref={fileInputRef}
-                            onChange={handleImageUpload}
-                        />
                         <input 
                             type="text"
                             placeholder="name"
                             value={name}
-                            onChange={function(){setName(name)}}
+                            onChange={function(e){setName(e.target.value)}}
+                        />
+                        <input 
+                            type="number"
+                            placeholder="price"
+                            value={price}
+                            onChange={function(e){setPrice(parseFloat(e.target.value))}}
                         />
                         <input 
                             type="text"
-                            placeholder="price"
-                            onChange={function(){setPrice(price)}}
+                            placeholder="Image URL"
+                            value={imageURL}
+                            onChange={function(e){setImageURL(e.target.value)}}
                         />
-                        <button onClick={function(){handleModal()}} type="button">Cancel</button>
-                        <button type="submit">Add</button>
+                        <div className="form-buttons">
+                            <button onClick={function(){handleModal()}} type="button">Cancel</button>
+                            <button type="submit">Add</button>
+                        </div>
                     </form>
-                    {errorMessage}
                 </div>
             </dialog>
         </>
