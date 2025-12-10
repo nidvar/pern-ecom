@@ -11,7 +11,7 @@ export const useProductStore = create<ProductStoreType>(function(set){
         fetchProducts: async ()=>{
             try{
                 set({loading: true});
-                const res = await fetch(baseURL + '/api/allproducts');
+                const res = await fetch(baseURL + '/api/all');
                 const data = await res.json();
                 set({
                     products: data.data
@@ -20,6 +20,17 @@ export const useProductStore = create<ProductStoreType>(function(set){
                 console.log(err);
             }finally{
                 set({loading: false});
+            }
+        },
+        deleteProduct: async (id: string)=>{
+            try{
+                const res = await fetch(baseURL + '/api/delete/' + id, {
+                    method: 'DELETE'
+                });
+                const data = await res.json();
+                console.log(data);
+            }catch(err){
+                console.log(err)
             }
         }
     }

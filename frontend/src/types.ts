@@ -7,6 +7,7 @@ export type ProductStoreType = {
     products: ProductType[],
     loading: boolean,
     fetchProducts: ()=> void
+    deleteProduct: (id: string)=> void
 }
 
 export type ProductType = {

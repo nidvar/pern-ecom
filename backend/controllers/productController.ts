@@ -9,7 +9,7 @@ export const allProducts = async (req: Request, res: Response)=>{
             SELECT * FROM products
             ORDER BY created_at DESC
         `;
-        console.log('products------->', products);
+        console.log('first product------->', products[0]);
         return res.status(200).json({message: 'all products', data: products});
     }catch(error){
         return res.status(500).json({message: 'fail'})
@@ -75,7 +75,6 @@ export const updateProduct = async (req: Request, res: Response)=>{
 };
 
 export const deleteProduct = async (req: Request, res: Response)=>{
-    console.log('delete product');
     try{
         const id = req.params.id;
 
@@ -86,6 +85,6 @@ export const deleteProduct = async (req: Request, res: Response)=>{
         return res.status(201).json({message: 'deleted product', product: product[0]});
     }catch(err){
         console.log(err);
-        return res.status(500).json({message: 'delete atempt fail'})
+        return res.status(500).json({message: 'delete attempt fail'})
     };
 };
