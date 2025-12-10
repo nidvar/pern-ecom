@@ -8,7 +8,7 @@ const AddProduct = function(){
     const productStore = useProductStore();
 
     const [name, setName] = useState('');
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState('');
     const [imageURL, setImageURL] = useState('');
 
     const handleModal = function(arg?: string){
@@ -26,7 +26,7 @@ const AddProduct = function(){
         e.preventDefault();
         const productObj = {
             name: name,
-            price: price.toFixed(2),
+            price: parseFloat(price).toFixed(2),
             image: imageURL
         };
         productStore.addProduct(productObj);
@@ -49,7 +49,7 @@ const AddProduct = function(){
                             type="number"
                             placeholder="price"
                             value={price}
-                            onChange={function(e){setPrice(parseFloat(e.target.value))}}
+                            onChange={function(e){setPrice(e.target.value)}}
                         />
                         <input 
                             type="text"

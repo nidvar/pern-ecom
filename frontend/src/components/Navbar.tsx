@@ -35,16 +35,20 @@ const Navbar = function(){
         <>
             <div className='my-nav'>
                 <div className='my-nav-inner'>
-                    <div className='nav-icon-container hover'>
-                        <Link to='/' ><House /></Link>
-                    </div>
+                    <Link to='/' >
+                        <div className='nav-icon-container hover'>
+                            <House />
+                        </div>
+                    </Link>
                     <div className='my-nav-inner-right'>
-                        <div className='nav-icon-container hover'>
-                            <Palette onClick={openPalette} />
+                        <div className='nav-icon-container hover' onClick={openPalette}>
+                            <Palette />
                         </div>
-                        <div className='nav-icon-container hover'>
-                            <Link to='/' ><ShoppingCartIcon /></Link>
-                        </div>
+                        <Link to='/' >
+                            <div className='nav-icon-container hover'>
+                                <ShoppingCartIcon />
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
