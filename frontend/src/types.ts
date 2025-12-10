@@ -8,6 +8,7 @@ export type ProductStoreType = {
     loading: boolean,
     fetchProducts: ()=> void
     deleteProduct: (id: string)=> void
+    addProduct: (product: ProductType)=> void
 }
 
 export type ProductType = {
