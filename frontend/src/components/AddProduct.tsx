@@ -22,15 +22,16 @@ const AddProduct = function(){
         };
     };
 
-    function handleSubmit(e: FormEvent<HTMLFormElement>): void {
+    const handleSubmit = async function(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const productObj = {
             name: name,
             price: parseFloat(price).toFixed(2),
             image: imageURL
         };
-        productStore.addProduct(productObj);
+        await productStore.addProduct(productObj);
         handleModal();
+        await productStore.fetchProducts();
     };
 
     return(

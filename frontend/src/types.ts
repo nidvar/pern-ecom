@@ -6,9 +6,9 @@ export type ThemeStoreType = {
 export type ProductStoreType = {
     products: ProductType[],
     loading: boolean,
-    fetchProducts: ()=> void
-    deleteProduct: (id: string)=> void
-    addProduct: (product: ProductType)=> void
+    fetchProducts: ()=> Promise<void>
+    deleteProduct: (id: string)=> Promise<void>
+    addProduct: (product: ProductType)=> Promise<void>
 }
 
 export type ProductType = {
