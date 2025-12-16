@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import type { ProductStoreType, ProductType } from '../types';
 
-const baseURL = 'http://localhost:3001';
+const baseURL = '';
 
 export const useProductStore = create<ProductStoreType>(function(set){
     return {
