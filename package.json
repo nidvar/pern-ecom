@@ -7,6 +7,11 @@
     "build": "tsc",
     "dev": "node dist/server.js"
   },
+  "scripts-test": { 
+    "build": "cd frontend && npm install && npm run build && cd .. && tsc", 
+    "dev": "ts-node backend/server.ts", 
+    "start": "node dist/server.js" 
+  },
   "keywords": [],
   "author": "",
   "type": "module",

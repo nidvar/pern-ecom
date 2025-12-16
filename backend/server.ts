@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3000;
 
 import type { Request } from "express";
 
+import path from 'path';
 import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -47,6 +48,13 @@ app.use(async(req: Request, res, next)=>{
 })
 
 app.use('/api', productRoutes);
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// Send index.html for all other routes (React Router)
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 async function initDB(){
     try{
