@@ -57,6 +57,14 @@
     width: 100%;
 }
 
+/* modal */
+
+.my-modal {
+    padding: 30px;
+    border-radius: 6px;
+    background-color: whitesmoke;
+}
+
 
 
 
@@ -113,8 +121,11 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 300px;
+    max-width: 600px;
+    width: 100%;
     margin: auto;
+    padding: 15px;
+    background-color: lightblue;
 }
 
 .form-buttons {

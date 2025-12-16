@@ -4,10 +4,11 @@ import type { ProductStoreType, ProductType } from '../types';
 
 const baseURL = 'http://localhost:3001';
 
-export const useProductStore = create<ProductStoreType>(function(set){
+export const useProductStore = create<ProductStoreType>(function(set, get){
     return {
         products: [],
         loading: false,
+        currentProduct: null,
         fetchProducts: async ()=>{
             try{
                 set({loading: true});
@@ -23,7 +24,6 @@ export const useProductStore = create<ProductStoreType>(function(set){
             }
         },
         addProduct: async (product:ProductType)=>{
-            console.log(product);
             const res = await fetch(baseURL + '/api/create', {
                 method: 'POST',
                 headers: {
@@ -44,6 +44,31 @@ export const useProductStore = create<ProductStoreType>(function(set){
                 console.log(data);
             }catch(err){
                 console.log(err)
+            }
+        },
+        editProduct: async (id: string, product: ProductType)=>{
+            try{
+                const res = await fetch(baseURL + '/api/update/' + id, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(product)
+                });
+                const data = await res.json();
+                console.log(data);
+            }catch(err){
+                console.log(err)
+            }
+        },
+        fetchSingleProduct: async (id: string)=>{
+            try{
+                const res = await fetch(baseURL + '/api/product/' + id);
+                const data = await res.json();
+                console.log(data);
+                set({ currentProduct: data.product[0] })
+            }catch(err){
+                console.log(err);
             }
         }
     }

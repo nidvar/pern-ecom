@@ -38,7 +38,7 @@ const AddProduct = function(){
         <>
             <button onClick={function(){handleModal('open')}}>Add Product</button>
             <dialog id="my_modal_1" className="modal">
-                <div className="modal-box">
+                <div className="my-modal">
                     <form onSubmit={handleSubmit} className="my-form">
                         <input 
                             type="text"
