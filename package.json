@@ -7,10 +7,10 @@
     "build": "tsc",
     "dev": "node dist/server.js"
   },
-  "scripts-test": { 
-    "build": "cd frontend && npm install && npm run build && cd .. && tsc", 
-    "dev": "ts-node backend/server.ts", 
-    "start": "node dist/server.js" 
+  "scripts-test": {
+    "build": "cd frontend && npm install && npm run build && cd .. && tsc",
+    "dev": "ts-node backend/server.ts",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -29,8 +29,9 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/helmet": "^0.0.48",
     "@types/morgan": "^1.9.10",
-    "@types/node": "^24.10.1",
+    "@types/node": "^24.10.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
