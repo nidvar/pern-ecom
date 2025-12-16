@@ -8,7 +8,7 @@
     "dev": "node dist/server.js"
   },
   "scripts-test": {
-    "build": "cd frontend && npm install && npm run build && cd .. && tsc",
+    "build": "cd frontend && npm install && npm run build && cd .. && npm install && tsc",
     "dev": "ts-node backend/server.ts",
     "start": "node dist/server.js"
   },
