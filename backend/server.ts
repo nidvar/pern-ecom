@@ -25,7 +25,16 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 app.use(express.json());
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        imgSrc: ["'self'", "data:", "https:"],
+      },
+    },
+  })
+);
 app.use(morgan("dev"));
 
 app.use(async(req: Request, res: Response, next: NextFunction)=>{  // <-- typed res & next
