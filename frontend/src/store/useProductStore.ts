@@ -4,7 +4,7 @@ import type { ProductStoreType, ProductType } from '../types';
 
 const baseURL = 'http://localhost:3001';
 
-export const useProductStore = create<ProductStoreType>(function(set, get){
+export const useProductStore = create<ProductStoreType>(function(set){
     return {
         products: [],
         loading: false,
