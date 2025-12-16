@@ -56,11 +56,11 @@ app.use(async(req: Request, res: Response, next: NextFunction)=>{  // <-- typed 
 
 app.use('/api', productRoutes);
 
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Send index.html for all other routes (React Router)
 app.get(/.*/, (_req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
 
